@@ -83,10 +83,12 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
-  @import '~styles/varibles.styl'
+  @import '~styles/mixins.styl'
   .icons >>> .swiper-container
     height: 0
     padding-bottom :50%
+  .icons
+    margin-top: .1rem
     .icon
       position: relative
       overflow: hidden
@@ -115,5 +117,5 @@ export default {
         line-height: .44rem
         text-align: center
         color: $darkTextColor
-        elipipsis()
+        ellipsis()
 </style>
