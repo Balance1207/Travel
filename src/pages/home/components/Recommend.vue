@@ -6,7 +6,7 @@
       </div>
       <ul>
         <li class="item border-bottom"
-            v-for="item of recommendList"
+            v-for="item of list"
             :key="item.id"
         >
           <img class="item-img" :src="item.imgUrl">
@@ -23,30 +23,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1612/1d/1d9a740c1f9e0efaa3.img.jpg_200x200_63285bd9.jpg',
-        title: '成都海昌极地海洋公园',
-        desc: '奇妙的海底世界，梦幻的蓝色王国。'
-      }, {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/201309/24/977fea7b3c5cd758c8d65eac.jpg_200x200_697c3b3f.jpg',
-        title: '成都熊猫基地',
-        desc: '无关黑与白，不分胖与瘦。熊猫！熊猫！'
-      }, {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1705/ed/edd4063a442f30c1a3.img.jpg_200x200_724f9e6a.jpg',
-        title: '天堂岛海洋公园',
-        desc: 'Paradise Island Ocean Park'
-      }, {
-        id: '004',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1505/b0/b0132e78efa00572.water.jpg_200x200_3f499a59.jpg',
-        title: '青城山',
-        desc: '世界文化遗产，绝顶秀美及幽深。'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
