@@ -5,7 +5,9 @@
           <div class="title border-topbottom">当前城市</div>
           <div class="button-list">
             <div class="button-wrapper">
-              <div class="button">成都</div>
+              <div class="button">
+                {{ this.currentCity }}
+              </div>
             </div>
           </div>
         </div>
@@ -15,6 +17,7 @@
             <div class="button-wrapper"
                  v-for="item of hotCities"
                  :key="item.id"
+                 @click="handleCityClick(item.name)"
             >
               <div class="button">{{ item.name }}</div>
             </div>
@@ -29,6 +32,7 @@
           <div class="item-list"
                v-for="innerItem of item"
                :key="innerItem.id"
+               @click="handleCityClick(innerItem.name)"
           >
             <div class="item border-bottom">{{ innerItem.name }}</div>
           </div>
@@ -39,6 +43,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
@@ -46,8 +51,15 @@ export default {
     hotCities: Array,
     letter: String
   },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  methods: {
+    // 直接commit
+    handleCityClick (city) {
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      // 编程式导航
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   watch: {
     letter () {
@@ -56,6 +68,16 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  computed: {
+    // 展开运算符...mapState，
+    // mapState是指我把vuex里面的数据映射到这个组件的computed计算属性里
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper)
   }
 }
 </script>

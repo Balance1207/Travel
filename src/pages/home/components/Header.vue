@@ -12,17 +12,28 @@
       class="header-right"
       to="/city"
     >
+      <!--{{ this.$store.state.city }}-->
+
       {{ this.city }}
+
+      <!--{{ this.doubleCity}}-->
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </router-link>
   </div>
 </template>
 
 <script>
+// Vuex高级API用法
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  // Vuex高级API用法
+  computed: {
+    // 展开运算符，
+    // mapState是指我把vuex里面的数据映射到这个组件的computed计算属性里
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -52,7 +63,8 @@ export default {
       color: #ccc
       border-radius: .1rem
     .header-right
-      width: 1.24rem
+      min-width: 1.04rem
+      padding: 0 .1rem
       float: right
       text-align: center
       .arrow-icon
