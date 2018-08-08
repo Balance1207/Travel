@@ -17,7 +17,6 @@
       v-show="showGallary"
       @close="handleGallaryClose"
     >
-
     </common-gallary>
   </div>
 </template>
